@@ -1,0 +1,1 @@
+competidor1(float(input)("Ingrese el valor que "))
