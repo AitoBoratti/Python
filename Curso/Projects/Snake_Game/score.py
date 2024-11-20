@@ -1,0 +1,29 @@
+from turtle import Turtle
+
+LIMIT = 295
+SCORE_FONT = ("Arial", 16, "normal")
+class Score:
+    def __init__(self) -> None:
+        self.item = Turtle(visible=False)
+        self.item.penup()
+        self.item.color("white")
+        self.score = 0
+        self.print_score()
+    
+    def print_score(self):
+        self.item.clear()
+        self.item.goto(x=0,y=LIMIT)
+        text = f"SCORE: {self.score}"
+        self.item.write(arg=text,align="center",font=SCORE_FONT)
+    
+    def update_score(self):
+        self.score += 1
+        self.print_score()
+
+    def print_end(self):
+        self.item.clear()
+        self.item.goto(0,0)
+        # text = f"  Game Over\n\nFinal score: {self.score}\n Restart? Y/N"
+        text = f"  Game Over\n\nFinal score: {self.score}"
+        self.item.write(arg=text,align="center",font=SCORE_FONT)
+        self.score = 0

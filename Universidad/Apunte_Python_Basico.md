@@ -23,20 +23,20 @@ Se prioriza la conservacion de los datos antes que la eficiencia.
     Numero1 = 5
     Numero2 = 3
 
-    Numero1 += Numero2 = 8
+    Numero1 += Numero2 "= 8"
     
-    Numero1 -= Numero2 = 2
+    Numero1 -= Numero2 "= 2"
     
-    Numero1 *= Numero2 = 15
+    Numero1 *= Numero2 "= 15"
     
-    Numero1 /= Numero2 = 5/3
+    Numero1 /= Numero2 "= 5/3"
 
-    Numero1 **= Numero2 = 125
+    Numero1 **= Numero2 "= 125"
 
     Numero1 = 10
     Numero2 = 3
 
-      Modulo = Numero1 % Numero 2 == 1
+    Modulo = Numero1 % Numero 2 "= 1"
 ```
 ## Operaciones booleanas:
 * a == b:  Compara si A es equivalente B, devuelve true en caso de serlo, o false si no.
@@ -105,7 +105,7 @@ Imprimir con datos y strings concatenados.
 ## Estructuras de repeticion, o bucles. 
 El for:
  ```py
-    for i in range (x,y,z)      #<-- Repetira y-x veces el bucle que se 
+for i in range (x,y,z)      #<-- Repetira y-x veces el bucle que se 
         # continua el bucle         # coloque debajo, saltando en intervalos 
          
                                     # En la variable i o contador, se ira 
@@ -113,7 +113,7 @@ El for:
                                     # realizados. 
  ```                                
  ```py 
- for element in collection:     #<-- Recorrera toda la coleccion, guardando 
+for element in collection:     #<-- Recorrera toda la coleccion, guardando 
                                 #    en element el objeto o dato actual. 
 ```
 El While: 
