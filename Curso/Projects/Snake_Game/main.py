@@ -14,7 +14,8 @@ decoration = Screen_Decorator()
 snake = Snake()
 food = Food()
 
-
+game_is_on = True
+timer_id = None
 # def restart():
 #     global game_is_on,food,snake,score
 #     screen.reset()
@@ -27,9 +28,38 @@ food = Food()
 
 
 
+def adjust_inputs():
+    screen.onkey(key="w",fun=snake.up)
+    screen.onkey(key="d",fun=snake.right)   
+    screen.onkey(key="s",fun=snake.down)
+    screen.onkey(key="a",fun=snake.left)
+    screen.onkey(key="y",fun=reset)
+    screen.onkey(key="r",fun=reset)
+    screen.onkey(key="n",fun=screen.bye)
+
+
+def reset():
+    global game_is_on
+    game_is_on = True
+    
+    decoration.draw()
+    score.reset()
+    food.reset()
+    snake.reset()
+    game_loop()
+    
+
 def snake_eat():
-    food.teleport()
+    def _is_snake():
+        if snake.check_distance_from_body(food.item):
+            return True
+        return False
+    
+    
     snake.grow()
+    food.teleport()
+    while _is_snake():
+        food.teleport()
     score.update_score()
 
 
@@ -45,21 +75,23 @@ def game_loop():
             snake.disappear()
             food.disappear()
             score.print_end()
-
-        
-        screen.update()
         screen.ontimer(game_loop,snake.speed)
+        screen.update()
 
-screen.listen()
-screen.onkey(key="w",fun=snake.up)
-screen.onkey(key="d",fun=snake.right)   
-screen.onkey(key="s",fun=snake.down)
-screen.onkey(key="a",fun=snake.left)
-# screen.onkey(key="y",fun=restart)
+# screen.onkey(key="w",fun=snake.up)
+# screen.onkey(key="d",fun=snake.right)   
+# screen.onkey(key="s",fun=snake.down)
+# screen.onkey(key="a",fun=snake.left)
+
+"""--------------------"""
+# screen.onkey(key="y",fun=reset)
 # screen.onkey(key="n",fun=screen.bye)
 
-game_is_on = True
+
+
+screen.listen()
 game_loop()
+adjust_inputs()
 screen.exitonclick()
 
 

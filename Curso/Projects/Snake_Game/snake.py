@@ -56,7 +56,7 @@ class Snake:
         last_part = self.body[-1] 
         new_x = last_part.xcor() 
         new_y = last_part.ycor() - MOVE_DISTANCE
-        new_part.teleport(x=new_x,y=new_y)
+        new_part.goto(x=new_x,y=new_y)
 
 
         self.body.append(new_part)
@@ -68,6 +68,14 @@ class Snake:
         if self.head.distance(object) < 1:
             return True
         return False
+    
+    def check_distance_from_body(self,object):
+        for segment in self.body:
+            if segment.distance(object) < 1:
+                return True
+        return False
+    
+    
     def check_self_collision(self):
         for i in range(1,self.body_len(),1):
             if self.check_distance(self.body[i]):
@@ -82,3 +90,17 @@ class Snake:
     def disappear(self):
         for segment in self.body:
             segment.hideturtle()
+    
+    def reappear(self):
+        for segment in self.body:
+            segment.hideturtle()
+            
+            
+    def reset(self):
+        for segment in self.body:
+            segment.reset()
+            segment.goto(800,800)
+        self.body.clear()
+        self._create_snake()
+        self.head=self.body[0]
+        self.speed = 100

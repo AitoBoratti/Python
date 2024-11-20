@@ -23,7 +23,11 @@ class Score:
     def print_end(self):
         self.item.clear()
         self.item.goto(0,0)
-        # text = f"  Game Over\n\nFinal score: {self.score}\n Restart? Y/N"
-        text = f"  Game Over\n\nFinal score: {self.score}"
+        text = f" ¡Game Over!\n\n Final score: {self.score}\n"
+        # text = f"  Game Over\n\nFinal score: {self.score}"
         self.item.write(arg=text,align="center",font=SCORE_FONT)
-        self.score = 0
+        self.item.write(arg="Press R to restart, or N to close.",align="center",font=SCORE_FONT)
+    
+    def reset(self):
+        self.score = -1
+        self.update_score()

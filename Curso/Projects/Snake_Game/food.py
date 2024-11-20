@@ -16,6 +16,9 @@ class Food:
         return((randint(-LIMITS,LIMITS)*20,randint(-LIMITS,LIMITS)*20))
     def teleport(self):
         new_x,new_y = self._get_cords()
-        self.item.teleport(x=new_x,y=new_y)
+        self.item.goto(x=new_x,y=new_y)
     def disappear(self):
         self.item.hideturtle()
+    def reset(self):
+        self.item.showturtle()
+        self.teleport()

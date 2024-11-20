@@ -7,12 +7,12 @@ class Screen_Decorator:
         self.item = Turtle(visible=False)
         self.item.color("white")
         self.item.penup()
-        
-
-        # Dibujar borde ajustado
-        self.item.goto(LIMIT, -LIMIT)  # Esquina inferior derecha
-            # print(f"Esquina inferior derecha: ({LIMIT}, {-LIMIT})")
+        self.item.goto(LIMIT, -LIMIT)
         self.item.pendown()
+        self.draw()
+    def draw(self):  
+            # Esquina inferior derecha
+            # print(f"Esquina inferior derecha: ({LIMIT}, {-LIMIT})")
         self.item.goto(LIMIT, LIMIT+COMPENSATION)  # Esquina superior derecha
             # print(f"Esquina superior derecha: ({LIMIT}, {LIMIT+COMPENSATION})")
 
