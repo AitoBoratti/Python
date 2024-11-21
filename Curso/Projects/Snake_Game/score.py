@@ -1,6 +1,6 @@
 from turtle import Turtle
 
-LIMIT = 295
+POS = (0,295)
 SCORE_FONT = ("Arial", 16, "normal")
 class Score:
     def __init__(self) -> None:
@@ -12,7 +12,7 @@ class Score:
     
     def print_score(self):
         self.item.clear()
-        self.item.goto(x=0,y=LIMIT)
+        self.item.goto(POS)
         text = f"SCORE: {self.score}"
         self.item.write(arg=text,align="center",font=SCORE_FONT)
     
@@ -22,7 +22,7 @@ class Score:
 
     def print_end(self):
         self.item.clear()
-        self.item.goto(0,0)
+        self.item.home()
         text = f" ¡Game Over!\n\nFinal score: {self.score}.\n"
         text2 = "Press R to restart, or Esc to close."
         self.item.write(arg=text,align="center",font=SCORE_FONT)

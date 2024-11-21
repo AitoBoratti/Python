@@ -2,13 +2,13 @@ from turtle import Turtle
 from random import randint
 
 LIMITS = 14
-
+POS = (50,50)
 class Food:
     def __init__(self):
         self.item = Turtle("circle")
         self.item.penup()
         self.item.color("Green")
-        self.item.goto(50,50)
+        self.item.goto(POS)
         self.item.shapesize(0.6,0.6)
         self.teleport()
 

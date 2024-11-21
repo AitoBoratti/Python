@@ -23,7 +23,6 @@ class Game():
         self.screen.setup(width=SCREEN_SIZE,height=SCREEN_SIZE)
         self.screen.bgcolor(BACKGROUND_COLOR)
         self.screen.tracer(0)
-        self.screen.listen()
 
         
     def adjust_inputs(self):
@@ -75,8 +74,9 @@ class Game():
 
 
     def start(self):
-        self.game_loop()
+        self.screen.listen()
         self.adjust_inputs()
+        self.game_loop()
         self.screen.exitonclick()
 
 
