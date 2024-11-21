@@ -12,16 +12,18 @@ class Game():
     def __init__(self):    
         self.screen = Screen()
         self.adjust_screen()
+        
         self.score = Score()
-        self.decoration = Screen_Decorator()
         self.snake = Snake()
         self.food = Food()
+        self.decoration = Screen_Decorator()
         self.game_is_on = True
 
 
     def adjust_screen(self):
         self.screen.setup(width=SCREEN_SIZE,height=SCREEN_SIZE)
         self.screen.bgcolor(BACKGROUND_COLOR)
+        self.screen.title("Snake Game")
         self.screen.tracer(0)
 
         
@@ -30,7 +32,6 @@ class Game():
         self.screen.onkey(key="d",fun=self.snake.right)   
         self.screen.onkey(key="s",fun=self.snake.down)
         self.screen.onkey(key="a",fun=self.snake.left)
-        self.screen.onkey(key="r",fun=None)
         self.screen.onkey(key="Escape",fun=self.screen.bye)
 
 
@@ -46,7 +47,7 @@ class Game():
 
     def snake_eat(self):
         def _is_snake(self):
-            if self.snake.check_distance_from_body(self.food.item):
+            if self.snake.check_distance_from_body(self.food):
                 return True
             return False
         
@@ -61,14 +62,19 @@ class Game():
         if self.game_is_on:
             self.snake.move()
 
-            if self.snake.check_distance(self.food.item):
+            # Detect collision with Food.
+            if self.snake.check_distance(self.food):
                 self.snake_eat()
+
+            # Detect collision with wall or tail.
             if self.snake.check_wall_colission() or self.snake.check_self_collision():
                 self.game_is_on = False
                 self.snake.disappear()
                 self.food.disappear()
                 self.screen.onkey(key="r",fun=self.reset)
                 self.score.print_end()
+            
+            # Make the loop
             self.screen.ontimer(self.game_loop,self.snake.speed)
             self.screen.update()
 

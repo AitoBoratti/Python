@@ -2,31 +2,32 @@ from turtle import Turtle
 
 POS = (0,295)
 SCORE_FONT = ("Arial", 16, "normal")
-class Score:
+ALIGNMENT = "center"
+class Score(Turtle):
     def __init__(self) -> None:
-        self.item = Turtle(visible=False)
-        self.item.penup()
-        self.item.color("white")
+        super().__init__(visible=False)
+        self.penup()
+        self.color("white")
         self.score = 0
         self.print_score()
     
     def print_score(self):
-        self.item.clear()
-        self.item.goto(POS)
+        self.clear()
+        self.goto(POS)
         text = f"SCORE: {self.score}"
-        self.item.write(arg=text,align="center",font=SCORE_FONT)
+        self.write(arg=text,align=ALIGNMENT,font=SCORE_FONT)
     
     def update_score(self):
         self.score += 1
         self.print_score()
 
     def print_end(self):
-        self.item.clear()
-        self.item.home()
+        self.clear()
+        self.home()
         text = f" ¡Game Over!\n\nFinal score: {self.score}.\n"
         text2 = "Press R to restart, or Esc to close."
-        self.item.write(arg=text,align="center",font=SCORE_FONT)
-        self.item.write(arg=text2,align="center",font=SCORE_FONT)
+        self.write(arg=text,align=ALIGNMENT,font=SCORE_FONT)
+        self.write(arg=text2,align=ALIGNMENT,font=SCORE_FONT)
     
     def reset(self):
         self.score = -1
