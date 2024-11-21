@@ -3,6 +3,7 @@ from screen_decorator import Screen_Decorator
 from paddle import Paddle
 from ball import Ball
 import time as t
+
 screen = Screen()
 screen.setup(600,600)
 screen.tracer(0)
@@ -28,11 +29,14 @@ while game_is_on:
     t.sleep(0.055)
     screen.update()
     ball.move()
-
+    
     if  (ball.ycor() > 270 or ball.ycor() < -270):
         ball.bounce()
-    print(f"Print Paddle1: Distance: {ball.distance(paddle1)}")
-    print(f"Print Paddle2: Distance: {ball.distance(paddle2)}")
-    if ball.distance(paddle1) < 3 or ball.distance(paddle2) < 3:
-        ball.bounce()
+    if ((ball.distance(y=paddle1.ycor(),x=paddle1.xcor())<= 20) or  
+        (ball.distance(y=paddle2.ycor() +20,x=paddle2.xcor())  <= 20) or
+        (ball.distance(y=paddle1.ycor() -20,x=paddle1.xcor())  <= 20) or
+        (ball.distance(y=paddle2.ycor(),x=paddle2.xcor())      <= 20) or
+        (ball.distance(y=paddle1.ycor() +20,x=paddle1.xcor())  <= 20) or
+        (ball.distance(y=paddle2.ycor() -20,x=paddle2.xcor())  <= 20)):
+        ball.bounce_on_paddle()
 screen.exitonclick()
