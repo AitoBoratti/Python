@@ -19,8 +19,8 @@ ball = Ball()
 
 score = Score()
 
-ia = Paddle_IA(ball=ball,paddle=paddle2)
-ia2 = Paddle_IA(ball=ball,paddle=paddle1)
+ia = Paddle_IA(ball=ball,paddle=paddle1,side="left")
+ia2 = Paddle_IA(ball=ball,paddle=paddle2,side="right")
 
 screen.listen()
 screen.onkeypress(key="w",fun=paddle1.go_up)
@@ -33,8 +33,8 @@ game_is_on = True
 
 def check_paddle_collision():
     paddle_width = 20
-    paddle_height = 100
-    ball_radius = 7  # Ajusta según el tamaño real de la pelota
+    paddle_height = 110
+    ball_radius = 10  # Ajusta según el tamaño real de la pelota
 
     # Límites de la primera paleta (paddle1)
     paddle1_top = paddle1.ycor() + paddle_height / 2
@@ -61,34 +61,51 @@ def check_paddle_collision():
     return False
 
 
+def serve(side):
+    ball.serve(side)
+    screen.onkey(key="space",fun=None)
+
+
 def game_loop():
     if game_is_on:
+
+
+
+        # CODIGO PARA LULUS, LUEGO ELIMINAR
+        
+        #---------------------------------
+
+
+
+
         screen.update()
         ball.move()
-        
+        ball.can_bounce = True
         
         # ia.adjust_position()
-        # ia2.adjust_position()
+        ia2.adjust_position()
         
         
-        if  (ball.ycor() > 270 or ball.ycor() < -270):
+        if  (ball.ycor() > 280 or ball.ycor() < -280):
             ball.bounce()
             
         if check_paddle_collision():
             ball.bounce_on_paddle()
-            ball.can_bounce = True
             
         if  (ball.xcor() > 300):
             score.increment_left()
             ball.reset()
+            screen.onkey(fun= lambda x = "left" :serve(x),key="space")
             
-        if  (ball.xcor() < -300):
+        elif  (ball.xcor() < -300):
             score.increment_right()
             ball.reset()
+            screen.onkey(fun= lambda x = "right" :serve(x),key="space")
             
             
         screen.ontimer(game_loop,(10))
-
+from time import time
+print(time())
 
 game_loop()
 screen.exitonclick()

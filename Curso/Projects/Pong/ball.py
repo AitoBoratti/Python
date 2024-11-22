@@ -1,6 +1,8 @@
 from turtle import Turtle
 from random import choice,uniform
-SPEED = 5
+from time import time
+SPEED_LIMIT = 2.9
+INITIAL_SPEED = 5
 class Ball(Turtle):
     def __init__(self):
         super().__init__("circle")
@@ -8,13 +10,15 @@ class Ball(Turtle):
         self.up()
         self.speed("fastest")
         self.shapesize(0.7)
-        self._speed = SPEED
-        self.x_move = choice([-SPEED,SPEED])
-        self.y_move = choice([-SPEED,SPEED])
-        self.can_bounce = True
+        self._speed = INITIAL_SPEED
+        self.x_move = choice([-self._speed,self._speed])
+        self.y_move = choice([-self._speed,self._speed])
+        self.acceletarion = 0
+        self.last_time_variation = 0
+
 
     def move(self):
-        new_x = self.xcor() + self.x_move
+        new_x = self.xcor() + (self.x_move + self.acceletarion)
         new_y = self.ycor() + self.y_move
         self.goto(new_x,new_y)
 
@@ -28,14 +32,33 @@ class Ball(Turtle):
         self.y_move *= -1
         self.variation()
         
+    def accelerate(self):
+        if self.acceletarion >= 0 and self.acceletarion < SPEED_LIMIT:
+            self.acceletarion += .1
+        elif self.acceletarion < 0 and self.acceletarion > -SPEED_LIMIT:
+            self.acceletarion -= .1
+
+        if self.x_move > 0 and self.acceletarion < 0:
+            self.acceletarion *= -1
+        elif self.x_move < 0 and self.acceletarion > 0 :
+            self.acceletarion *= -1
 
     def bounce_on_paddle(self):
-        if self.can_bounce:
+        if time() - self.last_time_variation > 1:
             self.x_move *= -1
+            self.accelerate()
             self.variation()
-            self.can_bounce = False
+            self.last_time_variation = time()
             
     def reset(self):
-        self.can_bounce = True
-        self.bounce_on_paddle()
+        self.x_move *= -1
+        self.y_move = 0 
+        self.x_move = 0
+        self.acceletarion = 0
         self.home()
+
+    
+    def serve(self,side):
+        self.y_move = choice([-INITIAL_SPEED,INITIAL_SPEED])
+        self.x_move = INITIAL_SPEED  if (side == "right") else -INITIAL_SPEED
+        self.variation()
