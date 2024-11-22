@@ -1,8 +1,10 @@
 from turtle import Turtle
 from random import choice,uniform
 from time import time
-SPEED_LIMIT = 2.9
-INITIAL_SPEED = 5
+ACCLERATION_MOD = .2
+SPEED_LIMIT = 4.9
+INITIAL_SPEED = 3
+
 class Ball(Turtle):
     def __init__(self):
         super().__init__("circle")
@@ -11,8 +13,8 @@ class Ball(Turtle):
         self.speed("fastest")
         self.shapesize(0.7)
         self._speed = INITIAL_SPEED
-        self.x_move = choice([-self._speed,self._speed])
-        self.y_move = choice([-self._speed,self._speed])
+        self.x_move = 0
+        self.y_move = 0
         self.acceletarion = 0
         self.last_time_variation = 0
 
@@ -34,9 +36,9 @@ class Ball(Turtle):
         
     def accelerate(self):
         if self.acceletarion >= 0 and self.acceletarion < SPEED_LIMIT:
-            self.acceletarion += .1
+            self.acceletarion += ACCLERATION_MOD
         elif self.acceletarion < 0 and self.acceletarion > -SPEED_LIMIT:
-            self.acceletarion -= .1
+            self.acceletarion -= ACCLERATION_MOD
 
         if self.x_move > 0 and self.acceletarion < 0:
             self.acceletarion *= -1
@@ -60,5 +62,8 @@ class Ball(Turtle):
     
     def serve(self,side):
         self.y_move = choice([-INITIAL_SPEED,INITIAL_SPEED])
-        self.x_move = INITIAL_SPEED  if (side == "right") else -INITIAL_SPEED
+        if (side == "left"):
+            self.x_move = INITIAL_SPEED   
+        elif (side == "right"): 
+            self.x_move = -INITIAL_SPEED
         self.variation()
