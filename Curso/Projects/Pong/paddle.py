@@ -1,9 +1,11 @@
 from turtle import Turtle
+
 DIRECTIONS = {
     "left": (-285,0),
     "right" : (278,0)
 }
 SPEED = 30
+
 class Paddle(Turtle):
     def __init__(self,side) -> None:
         super().__init__("square")

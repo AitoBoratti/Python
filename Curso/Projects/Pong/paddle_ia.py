@@ -1,7 +1,7 @@
 from random import randint
 from time import sleep
 
-"""75 seems like a fair difficulty"""
+"""75 - Normal"""
 DIFFICULTY = 75
 class Paddle_IA():
     def __init__(self,paddle,ball,side) -> None:

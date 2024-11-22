@@ -1,6 +1,7 @@
 from turtle import Turtle
 from random import choice,uniform
 from time import time
+
 ACCLERATION_MOD = .2
 SPEED_LIMIT = 4.9
 INITIAL_SPEED = 3
@@ -10,7 +11,6 @@ class Ball(Turtle):
         super().__init__("circle")
         self.color("Purple")
         self.up()
-        self.speed("fastest")
         self.shapesize(0.7)
         self._speed = INITIAL_SPEED
         self.x_move = 0

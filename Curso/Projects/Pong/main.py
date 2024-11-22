@@ -6,9 +6,12 @@ from paddle_ia import Paddle_IA
 from score import Score
 from random import choice
 
+X_LIMIT = 300
+Y_LIMIT = 280
+SCREEN_SIZE = 600
 
 screen = Screen()
-screen.setup(600,600)
+screen.setup(SCREEN_SIZE,SCREEN_SIZE)
 screen.tracer(0)
 screen.bgcolor("black")
 screen.title("Pong")
@@ -80,13 +83,13 @@ def game_loop():
         ia2.adjust_position()
         
         
-        if  (ball.ycor() > 280 or ball.ycor() < -280):
+        if  (ball.ycor() > Y_LIMIT or ball.ycor() < -Y_LIMIT):
             ball.bounce()
             
         if check_paddle_collision():
             ball.bounce_on_paddle()
             
-        if  (ball.xcor() > 300):
+        if  (ball.xcor() > X_LIMIT):
             score.increment_left()
             ball.reset()
             if ia2 != None:
@@ -94,7 +97,7 @@ def game_loop():
             else:
                 screen.onkey(fun= lambda x = "right" :serve(x),key="space")
             
-        elif  (ball.xcor() < -300):
+        elif  (ball.xcor() < -X_LIMIT):
             score.increment_right()
             ball.reset()
             if ia1 != None:
