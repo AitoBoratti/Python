@@ -1,5 +1,5 @@
 from turtle import Turtle
-from random import randint,choice,uniform
+from random import choice,uniform
 SPEED = 5
 class Ball(Turtle):
     def __init__(self):
@@ -9,15 +9,9 @@ class Ball(Turtle):
         self.speed("fastest")
         self.shapesize(0.7)
         self._speed = SPEED
-        self.x_move = SPEED
-        self.y_move = SPEED
-        self.random_start()
+        self.x_move = choice([-SPEED,SPEED])
+        self.y_move = choice([-SPEED,SPEED])
         self.can_bounce = True
-
-    def random_start(self):
-        angle = randint(-75, 75) + choice([0, 180])
-        self.setheading(angle)
-
 
     def move(self):
         new_x = self.xcor() + self.x_move
@@ -40,3 +34,8 @@ class Ball(Turtle):
             self.x_move *= -1
             self.variation()
             self.can_bounce = False
+            
+    def reset(self):
+        self.can_bounce = True
+        self.bounce_on_paddle()
+        self.home()
