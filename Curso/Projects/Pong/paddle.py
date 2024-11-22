@@ -3,7 +3,7 @@ DIRECTIONS = {
     "left": (-285,0),
     "right" : (278,0)
 }
-
+SPEED = 20
 class Paddle(Turtle):
     def __init__(self,side) -> None:
         super().__init__("square")
@@ -12,15 +12,14 @@ class Paddle(Turtle):
         self.color("white")
         self.shapesize(stretch_wid=1,stretch_len=5)
         self.goto(DIRECTIONS[side])
+        self.speed(0)
+        self._speed = SPEED
+
 
     def go_up (self):
         if not self.ycor() >= 240:
-            self.forward(20)
+            self.forward(self._speed)
 
     def go_down (self):
         if not self.ycor() <= -240:
-            self.backward(20)
-
-
-
-    #         self.paddle.append(new_part)
+            self.backward(self._speed)
