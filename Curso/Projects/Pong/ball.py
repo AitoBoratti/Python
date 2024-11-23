@@ -3,7 +3,7 @@ from random import choice,uniform
 from time import time
 
 ACCLERATION_MOD = .2
-SPEED_LIMIT = 4.9
+SPEED_LIMIT = 5
 INITIAL_SPEED = 3
 
 class Ball(Turtle):

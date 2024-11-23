@@ -33,7 +33,7 @@ class Paddle(Turtle):
 
 class Paddle_IA():
     # 35 - Normal
-    DIFFICULTY = 35
+    DIFFICULTY = 1
     SPEED = 10
     
     def __init__(self,paddle,ball,side) -> None:
