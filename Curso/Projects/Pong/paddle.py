@@ -4,7 +4,7 @@ DIRECTIONS = {
     "left": (-285,0),
     "right" : (278,0)
 }
-SPEED = 30
+SPEED = 10
 
 class Paddle(Turtle):
     def __init__(self,side) -> None:
@@ -18,10 +18,10 @@ class Paddle(Turtle):
         self._speed = SPEED
 
 
-    def go_up (self): 
+    def go_up (self, step = SPEED):
         if not self.ycor() >= 240:
-            self.forward(self._speed)
+            self.forward(step)
 
-    def go_down (self):
+    def go_down (self, step = SPEED):
         if not self.ycor() <= -240:
-            self.backward(self._speed)
+            self.backward(step)

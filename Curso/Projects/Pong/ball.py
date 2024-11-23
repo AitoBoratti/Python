@@ -13,8 +13,8 @@ class Ball(Turtle):
         self.up()
         self.shapesize(0.7)
         self._speed = INITIAL_SPEED
-        self.x_move = 0
-        self.y_move = 0
+        self.x_move = INITIAL_SPEED
+        self.y_move = INITIAL_SPEED
         self.acceletarion = 0
         self.last_time_variation = 0
 
