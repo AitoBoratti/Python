@@ -12,7 +12,6 @@ class Game():
     def __init__(self):    
         self.screen = Screen()
         self.adjust_screen()
-        
         self.score = Score()
         self.snake = Snake()
         self.food = Food()

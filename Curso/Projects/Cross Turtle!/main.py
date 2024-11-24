@@ -1,8 +1,7 @@
 from turtle import Screen
 from car import Car
-from decoration import Decoration
 from player import Player
-from interface import Interface
+from interface import Interface, Decoration
 
 class CrossTurtleGame:
     def __init__(self):
@@ -20,8 +19,8 @@ class CrossTurtleGame:
         self.game_is_on = True
 
         self.screen.listen()
-        self.screen.onkey(self.player.move_up, "w")
-        self.screen.onkey(self.player.move_down, "s")
+        self.screen.onkeypress(self.player.move_up, "w")
+        self.screen.onkeypress(self.player.move_down, "s")
 
     def create_cars(self):
         align = 1
@@ -33,8 +32,8 @@ class CrossTurtleGame:
         for car in self.cars:
             car.move_forward()
             # I must account for slight differences in heights
-            if (abs(car.xcor() - self.player.xcor()) <= 40 and 
-                abs(car.ycor() - self.player.ycor()) <= 15):
+            if (abs(car.xcor() - self.player.xcor())     <= 40 and 
+                abs(car.ycor() - (self.player.ycor()+1)) <= 20):
                 return True
         return False
 
@@ -47,24 +46,23 @@ class CrossTurtleGame:
             car.hideturtle()
         self.player.hideturtle()
         self.interface.end_game()
-        self.screen.update()
 
     def game_loop(self):
         if self.game_is_on:
             collision = self.cars_update()
-            self.screen.update()
             
             if collision:
                 self.game_is_on = False  
+                self.end_game()
 
             elif self.player.ycor() > 255:
                 self.interface.level_up()
                 self.accelerate()
                 self.player.reset()
 
+            self.screen.update()
             self.screen.ontimer(self.game_loop, 10)
-        else:
-            self.end_game()
+
 
     def run(self):
         self.create_cars()

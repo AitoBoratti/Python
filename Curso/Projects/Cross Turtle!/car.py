@@ -2,20 +2,10 @@ from turtle import Turtle
 from random import choice,randint
 
 class Car(Turtle):
-    COLORS = [
-    "darkred",      # Rojo oscuro
-    "darkblue",     # Azul oscuro
-    "darkgreen",    # Verde oscuro
-    "goldenrod",    # Oro viejo
-    "saddlebrown",  # Marrón cuero
-    "indigo",       # Índigo
-    "teal",         # Verde azulado
-    "darkorange",   # Naranja oscuro
-    "slateblue",    # Azul pizarra
-    "olive"         # Oliva
-    ]   
+    COLORS = ["darkred", "darkblue", "darkgreen", "goldenrod", "saddlebrown", "indigo", "teal", "darkorange", "slateblue", "olive"]   
     STEPS = 2
-    def __init__(self,side) -> None:
+    ACCELERATION = .5
+    def __init__(self, side) -> None:
         super().__init__(shape="square")
         self.shapesize(1.1,3)
         self.up()
@@ -52,5 +42,5 @@ class Car(Turtle):
 
     
     def accelerate(self):
-        self.steps += 1 if self.steps > 0 else -1
+        self.steps += self.ACCELERATION if self.steps > 0 else -self.ACCELERATION
     

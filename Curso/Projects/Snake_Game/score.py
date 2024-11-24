@@ -9,12 +9,14 @@ class Score(Turtle):
         self.penup()
         self.color("white")
         self.score = 0
+        self.high_score = 0
         self.print_score()
-    
+
+
     def print_score(self):
         self.clear()
         self.goto(POS)
-        text = f"SCORE: {self.score}"
+        text = f" SCORE:  {self.score}\t\tHIGHER SCORE: {self.high_score}  "
         self.write(arg=text,align=ALIGNMENT,font=SCORE_FONT)
     
     def update_score(self):
@@ -30,5 +32,10 @@ class Score(Turtle):
         self.write(arg=text2,align=ALIGNMENT,font=SCORE_FONT)
     
     def reset(self):
+        if self.score > self.high_score:
+            self.high_score = self.score
+
+
+
         self.score = -1
         self.update_score()

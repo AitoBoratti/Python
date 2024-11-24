@@ -1,7 +1,7 @@
 from turtle import Turtle
 
 class Player(Turtle):
-    STEPS = 15
+    STEPS = 10
     def __init__(self):
         super().__init__(shape="turtle")
         self.up()
