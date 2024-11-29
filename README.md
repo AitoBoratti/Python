@@ -10,21 +10,6 @@ Este repositorio abarca una variedad de áreas, desde conceptos básicos hasta a
 - Ejercicios que cubren diferentes conceptos de programación.
 - Soluciones a problemas comunes y ejemplos prácticos.
 
-## ¿Cómo empezar?
-
-1. Clona este repositorio en tu máquina local:
-
-    ```bash
-    git clone https://github.com/AitoBoratti/Python.git
-    ```
-
-2. Si el proyecto tiene dependencias, instala las librerías necesarias:
-
-    ```bash
-    pip install -r requirements.txt
-    ```
-
-3. Ejecuta los scripts desde tu entorno local.
 
 ## Contribuciones
 
@@ -37,4 +22,4 @@ Este repositorio está bajo la **Licencia MIT**.
 ---
 
 **GitHub**: [https://github.com/AitoBoratti](https://github.com/AitoBoratti)  
-**LinkedIn**: [https://linkedin.com/in/alberto-a-boratti](https://linkedin.com/in/alberto-a-boratt
+**LinkedIn**: [https://linkedin.com/in/alberto-a-boratti](https://linkedin.com/in/alberto-a-boratti)
