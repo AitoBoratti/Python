@@ -37,4 +37,4 @@ Este repositorio está bajo la **Licencia MIT**.
 ---
 
 **GitHub**: [https://github.com/AitoBoratti](https://github.com/AitoBoratti)  
-**LinkedIn**: [https://www.linkedin.com/in/alberto-a-boratti](https://www.linkedin.com/in/alberto-a-boratt
+**LinkedIn**: [https://linkedin.com/in/alberto-a-boratti](https://linkedin.com/in/alberto-a-boratt
