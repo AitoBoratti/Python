@@ -2,8 +2,7 @@ from turtle import Screen
 from snake import Snake
 from food import Food
 from screen_decorator import Screen_Decorator
-from score import Score
-
+from score import Score      
 SCREEN_SIZE = 640
 BACKGROUND_COLOR = "Black"
 
