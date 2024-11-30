@@ -1,4 +1,4 @@
-# Python Projects
+# Projectos y Aprendizaje Python
 
 Bienvenido a mi repositorio de **proyectos en Python**. Aquí comparto varios scripts, ejercicios y proyectos que he desarrollado utilizando este poderoso lenguaje de programación.
 
